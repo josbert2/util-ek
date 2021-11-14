@@ -84,6 +84,7 @@ def forgot():
 @app.route('/qr-code', methods=['GET', 'POST'])
 def qrCode():
     qrCode = request.form.get('qr-code-text')
+    
     if qrCode != '':
         print(1)
         link = qrCode
@@ -93,6 +94,7 @@ def qrCode():
     else:
         print(0)
         return render_template('pages/qr-code.html', **locals())
+    
         
 
 

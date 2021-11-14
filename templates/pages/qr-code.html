@@ -27,12 +27,9 @@
     </div>
 </div>
 
-{{qrCode}}
-
-{% if qr == '0' %}
+{% if qrCode != '' %}
 
 
-{% else %}
 <div class="w-5/12 mx-auto mt-20 ring p">
     <div class="font-bold text-white ph">
         QR code generator
@@ -49,6 +46,10 @@
         </div>
     </div>
 </div>
+
+{% else %}
+
+
 {% endif %}
 
 
