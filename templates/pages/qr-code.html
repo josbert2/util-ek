@@ -1,0 +1,67 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+
+<div>
+    
+
+</div>
+<div class="w-5/12 mx-auto mt-20 ring p">
+    <div class="font-bold text-white ph">
+        Introduce un link o texto
+    </div>
+    <div class="py-14">
+        <div class="flex justify-center mx-auto w-96">
+            <form action="/qr-code" method="POST" class="w-full">
+                <input type="text" name="qr-code-text" class="w-full h-24 pl-5 bg-gray-900 rounded-lg text-gray-50" style="background-color: #131313;">
+                <div class="mx-auto mt-16 w-96">
+                    <button type="submit" class="w-full py-6 font-bold text-white uppercase bg-blue-500 rounded-md font-lg">
+                        Generar 
+                    </button>
+                    {{ qr }}
+                </div>
+            </form>
+            
+        </div>
+        
+    </div>
+</div>
+
+{{qrCode}}
+
+{% if qr == '0' %}
+
+
+{% else %}
+<div class="w-5/12 mx-auto mt-20 ring p">
+    <div class="font-bold text-white ph">
+        QR code generator
+    </div>
+    <div class="py-14">
+        <div class="mx-auto bg-white w-96 h-96">
+            <img class="object-cover w-full h-full" src="./static/img/qrcode.svg" alt="">
+            
+        </div>
+        <div class="mx-auto mt-16 w-96">
+            <button class="w-full py-6 font-bold text-white uppercase bg-blue-500 rounded-md font-lg">
+                Descargar SVG
+            </button>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
