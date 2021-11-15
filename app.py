@@ -13,7 +13,10 @@ import os
 # QR 
 #----------------------------------------------------------------------------#
 import pyqrcode
-
+import random
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from webdriver_manager.chrome import ChromeDriverManager
 
 #----------------------------------------------------------------------------#
 # App Config.
@@ -54,6 +57,7 @@ def login_required(test):
 
 @app.route('/')
 def home():
+  
     return render_template('pages/placeholder.home.html')
 
 
@@ -79,6 +83,23 @@ def forgot():
     form = ForgotForm(request.form)
     return render_template('forms/forgot.html', form=form)
 
+@app.route('/rrss')
+def rrss():
+   
+    return render_template('pages/category-rrss.html')
+
+
+@app.route('/history-random')
+def historyRandom():
+    when = ['A few years ago', 'Yesterday', 'Last night', 'A long time ago','On 20th Jan']
+    who = ['a rabbit', 'an elephant', 'a mouse', 'a turtle','a cat']
+    name = ['Ali', 'Miriam','daniel', 'Hoouk', 'Starwalker']
+    residence = ['Barcelona','India', 'Germany', 'Venice', 'England']
+    went = ['cinema', 'university','seminar', 'school', 'laundry']
+    happened = ['made a lot of friends','Eats a burger', 'found a secret key', 'solved a mistery', 'wrote a book']
+    history = random.choice(when) + ', ' + random.choice(who) + ' that lived in ' + random.choice(residence) + ', went to the ' + random.choice(went) + ' and ' + random.choice(happened)
+
+    return render_template('pages/history-random.html', **locals())
 
 
 @app.route('/qr-code', methods=['GET', 'POST'])
